@@ -1,38 +1,104 @@
-.App {
+.app-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 24px 24px 16px 24px;
+  font-family: Arial, sans-serif;
+}
+
+.todo-separator{
+  margin: 20px 0 24px 0;
+  border: none;
+  border-top: 2px solid #e5e5e5;
+}
+
+h1 {
   text-align: center;
+  font-size: 2.7rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 18px;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+input, .form input {
+  flex: 1;
+  padding: 18px;
+  font-size: 1.3rem;
+  border: 1.5px solid #d3d8dd;
+  border-radius: 0; 
+  background: #f7fafd;
+  margin-right: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.one-side-rounded {
+  border-radius: 10px 0 0 10px;
 }
+
+button, .form button {
+  padding: 18px 36px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: 0;
+}
+
+
+
+.contact-list {
+  margin-top: 10px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background: #d3d8dd;
+  margin-bottom: 8px;
+  padding: 20px 24px;
+  border-radius: 8px;
+  justify-content: space-between;
+}
+
+.contact-info {
+  flex: 1;
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 18px;
+}
+
+.delete-btn, .edit-btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.delete-btn {
+  background: #fff;
+  color: #222;
+  border: 2px solid #d3d8dd;
+}
+.edit-btn {
+  background: #fff;
+  color: #222;
+  border: 2px solid #d3d8dd;
+}
+

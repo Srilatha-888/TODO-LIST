@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import "./index.css";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+
+  const handleAddOrEdit = (todo) => {
+    if (editIndex !== null) {
+      const updatedTodos = [...todos];
+      updatedTodos[editIndex] = todo;
+      setTodos(updatedTodos);
+      setEditIndex(null);
+    } else {
+      setTodos([...todos, todo]);
+    }
+  };
+
+  const handleDelete = (index) => {
+    const updatedTodos = todos.filter((_, i) => i !== index);
+    setTodos(updatedTodos);
+  };
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+  };
+
+  const initialFormValues =
+    editIndex !== null ? todos[editIndex] : { name: "", email: "" };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="todo-container">
+        <div className="todo-title">TODO LIST</div>
+        <hr className="todo-separator" />
+        <TodoForm
+          onSubmit={handleAddOrEdit}
+          initialValues={initialFormValues}
+          isEditing={editIndex !== null}
+        />
+        <TodoList todos={todos} onDelete={handleDelete} onEdit={handleEdit} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
