@@ -28,6 +28,10 @@ const App = () => {
     setEditIndex(index);
   };
 
+  const handleCancel = () => {
+    setEditIndex(null);
+  };
+
   const initialFormValues =
     editIndex !== null ? todos[editIndex] : { name: "", email: "" };
 
@@ -38,6 +42,7 @@ const App = () => {
         <hr className="todo-separator" />
         <TodoForm
           onSubmit={handleAddOrEdit}
+          onCancel={handleCancel}
           initialValues={initialFormValues}
           isEditing={editIndex !== null}
         />
