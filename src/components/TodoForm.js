@@ -2,10 +2,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import formValidationSchema from "../validations/formValidation";
 
-const TodoForm = ({ onSubmit, initialValues, isEditing }) => {
+const TodoForm = ({ onSubmit, onCancel, initialValues = { name: "", email: "" }, isEditing }) => {
   return (
     <Formik
       initialValues={initialValues}
+      enableReinitialize={true}
       validationSchema={formValidationSchema}
       onSubmit={(values, { resetForm }) => {
         onSubmit(values);
@@ -34,9 +35,20 @@ const TodoForm = ({ onSubmit, initialValues, isEditing }) => {
           />
           <ErrorMessage name="email" component="div" className="error" />
 
-          <button className="add-btn" type="submit">
-            {isEditing ? "Update" : "Add"}
-          </button>
+          <div className="button-group">
+            <button className="add-btn" type="submit">
+              {isEditing ? "Update" : "Add"}
+            </button>
+            {isEditing && (
+              <button 
+                className="cancel-btn" 
+                type="button" 
+                onClick={onCancel}
+              >
+                Cancel
+              </button>
+            )}
+          </div>
         </Form>
       )}
     </Formik>
